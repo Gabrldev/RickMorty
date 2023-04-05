@@ -1,0 +1,138 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background: #101010;
+    width: 100%;
+    height: 100vh;
+    color: white;
+    overflow: hidden;
+}
+.logo{
+    width: 200px;
+}
+.header{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    top: 0;
+    animation: top 0.7s ease-in-out;
+}
+.main{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+.section{
+    display: flex;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 50px;
+    padding-top: 50px;
+    width: 100%;
+}
+.izquierda{
+    width: 50%;
+}
+.derecha{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    animation: fade 1s ease-in;
+}
+.BoxContent{
+    width: 600px;
+    font-family: sans-serif;
+}
+.BoxContent h1{
+    font-size: 50px;
+    font-weight: 600;
+}
+.ImgBox{
+    display: flex;
+    justify-content: center;
+}
+.img{
+width: 80%; 
+filter: drop-shadow(37px -7px 250px rgba(255, 255, 255, 0.17));  
+animation: rotateIn 1s ease-in-out;
+}
+.text{
+    width: 550px;
+}
+.title{
+    font-size: 50px;
+    font-weight: 600;
+}
+
+@keyframes fade{
+    from{
+        transform: translateX(1600px);
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+@keyframes top{
+    from{
+        transform: translateY(-1600px);
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+@keyframes rotateIn {
+    from {
+      transform: rotate(0deg) scale(0.2);
+      opacity: 0;
+    }
+    to {
+      transform: rotate(360deg) scale(1);
+      opacity: 1;
+    }
+  }
+
+@media (max-width: 500px){
+    .section{
+        flex-direction: column;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+    }
+    .izquierda{
+        margin-top: 70px;
+        display:flex ;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: fit-content;
+    }
+    .derecha{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 50%;
+    }
+    .logo{
+        width: 100px;
+    }
+    .img{
+        width: 250px;
+    }
+    .text{
+        width: 360px;
+    }
+    
+}

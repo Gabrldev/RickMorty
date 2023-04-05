@@ -1,0 +1,92 @@
+.container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 350px;
+    background: #1E1E1E;
+    padding: 50px;
+    height: 400px;
+    color: white;
+    border-radius: 25px;
+    animation: fade 0.7s ease-in-out;
+
+}
+.card{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+}
+.img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+.alive{
+    position: absolute;
+    background: rgb(35, 204, 77);
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 15px;
+    bottom: 10px;
+    right: 15px;
+
+}
+.dead{
+    position: absolute;
+    background: rgb(204, 35, 35);
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 15px;
+    bottom: 10px;
+    right: 15px;
+}
+.unknown{
+    position: absolute;
+    background: rgb(35, 204, 176);
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-size: 10px;
+    bottom: 10px;
+    right: 15px;
+}
+.btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0 0 0 25px;
+    cursor: pointer;
+    font-weight: bold;
+    color: red;
+    font-size: 15px;
+}
+.btn i:hover{
+    color: #000;
+}
+@keyframes fade{
+    from{
+        transform: translateX(1600px);
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0)
+    }
+  }
+  @keyframes top{
+    from{
+        transform: translateY(-1600px);
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0)
+    }
+  }
