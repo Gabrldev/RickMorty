@@ -1,6 +1,7 @@
 export default function GetRandom({getRandon}) {
   return (
-
-    <button  >
+    <button>
+        Get Random
+    </button>
   )
 }

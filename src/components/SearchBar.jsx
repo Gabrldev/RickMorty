@@ -10,7 +10,10 @@ export default function SearchBar({ onSearch, getRandon }) {
     setId(e.target.value);
   };
 
-  const idRandom = Math.floor(Math.random() * (671 - 1) + 1);
+  const getRandomNumber = (() => {
+    const numbers = Array.from({ length: 826 }, (_, i) => i + 1);
+    return () => numbers.splice(Math.floor(Math.random() * numbers.length), 1)[0];
+  })()
 
 
   return (
@@ -33,7 +36,10 @@ export default function SearchBar({ onSearch, getRandon }) {
         </button>
       </div>
       <div>
-        
+        <button 
+        onClick={()=>getRandon(getRandomNumber())}
+        className={style.getrandom}
+        >Get Random</button>
       </div>
     </div>
   );
