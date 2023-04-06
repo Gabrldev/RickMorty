@@ -58,7 +58,7 @@
 }
 .img{
 width: 80%; 
-filter: drop-shadow(37px 2px 50px rgba(255, 255, 255, 0.17));  
+filter: drop-shadow(0px 0px 50px rgba(255, 255, 255, 0.17));  
 animation: rotateIn 1s ease-in-out;
 }
 .text{
@@ -127,9 +127,6 @@ animation: rotateIn 1s ease-in-out;
     }
     .logo{
         width: 100px;
-    }
-    .img{
-        width: 250px;
     }
     .text{
         width: 360px;
