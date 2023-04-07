@@ -10,6 +10,7 @@
   backdrop-filter: blur(50px);
 }
 .form {
+  margin-top: 20px;
   background: #1a1a1a;
   padding: 10px 30px;
   border-radius: 25px;
@@ -67,9 +68,29 @@
   .getrandom{
     margin-bottom: 20px;
   }
+  .form{
+    margin-top: 0;
+    padding: px 25px;
+  }
+  .button{
+    width: 28px;
+    height: 28px;
+  }
 }
 .hidden {
   display: none;
+}
+.back {
+  cursor: pointer;
+  color: #000;
+  text-decoration: none;
+  background: #fff;
+  padding: 8px 30px;
+  border-radius: 15px;
+  transition: transform 0.5s ease;
+}
+.back:hover {
+  transform: scale(1.1);
 }
 
 @keyframes left {

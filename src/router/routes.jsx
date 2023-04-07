@@ -7,6 +7,7 @@ import Nav from "../components/Nav/Nav.jsx";
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import Layout from "../components/layout/Layout.jsx";
 
 const Router = () => {
   const URL_BASE = "https://be-a-rym.up.railway.app/api/character";
@@ -51,14 +52,21 @@ const Router = () => {
       }
     });
   }
+
+  const onClose = (id) => {
+    setCharacters(characters.filter((char) => char.id !== id));
+    const notify = () => toast.success("Personaje eliminado con exito!");
+    notify();
+  };
   return (
     <BrowserRouter>
-      <Nav onSearch={onSearch} getRandon={getRandon} />
       <Routes>
+        <Route element={<Layout onSearch={onSearch} getRandon={getRandon}/>}>
+          <Route path="/dashboard" element={<Dashboard characters={characters} onClose={onClose}  />} />
+          <Route path="*" element={<Erro404 />} />
+          <Route path="/details/:id" element={<Detail />} />
+        </Route>
         <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard characters={characters} />} />
-        <Route path="*" element={<Erro404 />} />
-        <Route path="/details/:id" element={<Detail />} />
       </Routes>
     </BrowserRouter>
   );
