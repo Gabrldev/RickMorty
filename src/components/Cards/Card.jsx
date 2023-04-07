@@ -1,5 +1,5 @@
 import style from '../styles/card.module.css'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 export default function Card({name, status,image, onClose, id}) {
 
    const aliveOrDead = () => {
@@ -11,8 +11,8 @@ export default function Card({name, status,image, onClose, id}) {
          return style.unknown
       }
    }
-   console.log(name.length);
    return (
+      <Link to={`/details/${id}`}>
       <div className={style.container}>
          <button onClick={()=> onClose(id)}  className={style.btn}><i>X</i></button>
          <strong className={style.name}>{name}</strong>
@@ -20,9 +20,10 @@ export default function Card({name, status,image, onClose, id}) {
          <img src={image} alt={name} className={style.img}/>
          <h2 className={aliveOrDead()}>{status}</h2>
          </div>
-         <NavLink to={`/details/${id}`}  className={style.moreIn}>
+         <button  className={style.moreIn}>
             More Info
-         </NavLink>
+         </button>
       </div>
+      </Link>
    );
 }

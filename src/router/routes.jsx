@@ -3,11 +3,11 @@ import Dashboard from "../pages/Dasboard/Dasboard.jsx";
 import Home from "../pages/Home/Home.jsx";
 import Erro404 from "../components/Errors/Erro404.jsx";
 import Detail from "../components/Detail/Detail.jsx";
-import Nav from "../components/Nav/Nav.jsx";
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import Layout from "../components/layout/Layout.jsx";
+import Auth from "../pages/Auth/Auth.jsx";
 
 const Router = () => {
   const URL_BASE = "https://be-a-rym.up.railway.app/api/character";
@@ -67,6 +67,7 @@ const Router = () => {
           <Route path="/details/:id" element={<Detail />} />
         </Route>
         <Route path="/" element={<Home />} />
+        <Route path="/auth" element={<Auth />} />
       </Routes>
     </BrowserRouter>
   );
