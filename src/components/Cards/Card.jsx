@@ -1,6 +1,6 @@
 import style from '../styles/card.module.css'
-import { Link } from 'react-router-dom'
-export default function Card({name, status, species,gender, image, onClose, id}) {
+import { NavLink } from 'react-router-dom'
+export default function Card({name, status,image, onClose, id}) {
 
    const aliveOrDead = () => {
       if (status === 'Alive') {
@@ -11,17 +11,18 @@ export default function Card({name, status, species,gender, image, onClose, id})
          return style.unknown
       }
    }
+   console.log(name.length);
    return (
       <div className={style.container}>
          <button onClick={()=> onClose(id)}  className={style.btn}><i>X</i></button>
-         <h2>{name}</h2>
+         <strong className={style.name}>{name}</strong>
          <div className={style.card}>
          <img src={image} alt={name} className={style.img}/>
          <h2 className={aliveOrDead()}>{status}</h2>
-         <Link to={`/details/${id}`}>
-         <strong>More info</strong>
-         </Link>
          </div>
+         <NavLink to={`/details/${id}`}  className={style.moreIn}>
+            More Info
+         </NavLink>
       </div>
    );
 }

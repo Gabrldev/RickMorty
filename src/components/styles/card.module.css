@@ -13,6 +13,7 @@
     animation: fade 0.3s ease-in-out;
     transition: 0.5s ease;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.048);
+    gap: 10px;
 
 }
 .container:hover{
@@ -74,6 +75,20 @@
 }
 .btn i:hover{
     color: #000;
+}
+.name{
+    font-size: 17px;
+}
+.moreIn{
+    margin-top: 5px;
+    background: rgb(0, 174, 255);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 15px;
+    transition: transform 0.5s ease;
+}
+.moreIn:hover{
+    transform: scale(1.05);
 }
 @keyframes fade{
     from{
