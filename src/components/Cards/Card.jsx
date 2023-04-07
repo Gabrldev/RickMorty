@@ -1,4 +1,5 @@
-import style from './styles/card.module.css'
+import style from '../styles/card.module.css'
+import { Link } from 'react-router-dom'
 export default function Card({name, status, species,gender, image, onClose, id}) {
 
    const aliveOrDead = () => {
@@ -11,13 +12,15 @@ export default function Card({name, status, species,gender, image, onClose, id})
       }
    }
    return (
-
       <div className={style.container}>
          <button onClick={()=> onClose(id)}  className={style.btn}><i>X</i></button>
          <h2>{name}</h2>
          <div className={style.card}>
          <img src={image} alt={name} className={style.img}/>
          <h2 className={aliveOrDead()}>{status}</h2>
+         <Link to={`/details/${id}`}>
+         <strong>More info</strong>
+         </Link>
          </div>
       </div>
    );

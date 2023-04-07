@@ -1,4 +1,4 @@
-import "./styles/erro404.css";
+import "../styles/erro404.css";
 export default function Erro404() {
   return (
     <div className="background-img">

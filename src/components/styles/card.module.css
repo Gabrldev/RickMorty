@@ -10,8 +10,13 @@
     height: 400px;
     color: white;
     border-radius: 25px;
-    animation: fade 0.7s ease-in-out;
+    animation: fade 0.3s ease-in-out;
+    transition: 0.5s ease;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.048);
 
+}
+.container:hover{
+    transform: scale(1.05);
 }
 .card{
     position: relative;

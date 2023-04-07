@@ -1,7 +1,7 @@
 import style from "./home.module.css";
 import logo from "../../assets/logo.png";
 import Fondo from "../../assets/fondo2.png";
-import LinkBtn from "../../components/LinkBtn.jsx";
+import LinkBtn from "../../components/LinkBtn/LinkBtn.jsx";
 function Home() {
   return (
     <div className={style.container}>
