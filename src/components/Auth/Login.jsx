@@ -2,21 +2,26 @@ import { useState } from "react";
 import { supabase } from "../../client/client";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-const Login = ({ setToken }) => {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-  const handleChange = (e) => {
-    setFormData((prevFormData) => {
-      return {
+const Login = ({setToken}) => {
+  let navigate = useNavigate()
+
+  const [formData,setFormData] = useState({
+        email:'',password:''
+  })
+
+
+  function handleChange(event){
+    setFormData((prevFormData)=>{
+      return{
         ...prevFormData,
-        [e.target.name]: e.target.value,
-      };
-    });
-  };
-  async function handleSubmit(e) {
+        [event.target.name]:event.target.value
+      }
+
+    })
+
+  }
+
+  async function handleSubmit(e){
     e.preventDefault()
 
     try {
@@ -26,7 +31,6 @@ const Login = ({ setToken }) => {
           })
 
       if (error) throw error
-      console.log(data)
       setToken(data)
       navigate('/dashboard')
 
@@ -38,6 +42,7 @@ const Login = ({ setToken }) => {
       alert(error)
     }
   }
+
 
   return (
     <div>
@@ -54,7 +59,7 @@ const Login = ({ setToken }) => {
           name="password"
           onChange={handleChange}
         />
-        <button>Login</button>
+        <button type="submit">Login</button>
       </form>
       <strong style={{ color: "white" }}>
         No tienes una<Link to="/login">cuenta?</Link>

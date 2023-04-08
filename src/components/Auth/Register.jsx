@@ -2,6 +2,8 @@ import { useState } from "react";
 import { supabase } from "../../client/client";
 import { Link } from "react-router-dom";
 const Register = () => {
+
+
   const [formData, setFormData] = useState({
     fullname: "",
     email: "",
@@ -31,6 +33,8 @@ const Register = () => {
         alert(error.message)
     }
   };
+
+  
   return (
     <div>
       <form onSubmit={handleSubmit}>
