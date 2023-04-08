@@ -1,10 +1,9 @@
 {
-    "routes": [
-      { "src": "/dashboard", "dest": "/" },
-      { "src": "/details/:path*", "dest": "/" },
-      { "src": "/login", "dest": "/"},
-      { "src": "/register", "dest" : "/"},
-      { "src": "/(.*)", "dest": "/404"},
-      { "src": "/", "dest": "/"}
-    ]
-  }
+  "redirects": [
+    {
+      "source": "/details/:id",
+      "destination": "/details/:id",
+      "permanent": false
+    }
+  ]
+}
