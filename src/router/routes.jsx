@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Dashboard from "../pages/Dasboard/Dasboard.jsx";
+import Dashboard from "../pages/Dasboard/Dasboard";
 import Home from "../pages/Home/Home.jsx";
 import Erro404 from "../components/Errors/Erro404.jsx";
 import Detail from "../components/Detail/Detail.jsx";
@@ -7,7 +7,10 @@ import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import Layout from "../components/layout/Layout.jsx";
-import Auth from "../pages/Auth/Auth.jsx";
+import Register from "../components/Auth/Register.jsx";
+import Login from "../components/Auth/Login.jsx";
+import { useEffect } from "react";
+import { redirect } from "react-router-dom";
 
 const Router = () => {
   const URL_BASE = "https://be-a-rym.up.railway.app/api/character";
@@ -58,16 +61,33 @@ const Router = () => {
     const notify = () => toast.success("Personaje eliminado con exito!");
     notify();
   };
+
+  const [token, setToken] = useState(false)
+
+  if(token){
+    sessionStorage.setItem('token',JSON.stringify(token))
+  }
+
+  useEffect(() => {
+    if(sessionStorage.getItem('token')){
+      let data = JSON.parse(sessionStorage.getItem('token'))
+      setToken(data)
+    }
+    
+  }, [])
+
+console.log(token);
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Layout onSearch={onSearch} getRandon={getRandon}/>}>
-          <Route path="/dashboard" element={<Dashboard characters={characters} onClose={onClose}  />} />
+        <Route element={<Layout onSearch={onSearch} getRandon={getRandon} />}>
           <Route path="*" element={<Erro404 />} />
           <Route path="/details/:id" element={<Detail />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/dashboard" element={token !== false ? <Dashboard characters={characters} onClose={onClose} /> : <Login setToken={setToken}/>} /> 
+          <Route path="/login" element={token !== false ? <Dashboard characters={characters} onClose={onClose}  /> : <Login setToken={setToken}/>  }/>
         </Route>
         <Route path="/" element={<Home />} />
-        <Route path="/auth" element={<Auth />} />
       </Routes>
     </BrowserRouter>
   );

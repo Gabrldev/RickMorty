@@ -4,7 +4,7 @@ import Nav from "../Nav/Nav.jsx";
 const Layout = ({getRandon, onSearch}) => {
   return (
     <div>
-      <Nav getRandon={getRandon} onSearch={onSearch}/>
+      <Nav getRandon={getRandon} onSearch={onSearch} />
       <Outlet />
     </div>
   );
