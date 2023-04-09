@@ -2,7 +2,7 @@ import { useState } from "react";
 import { supabase } from "../../client/client";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-const Login = ({setToken}) => {
+const Login = () => {
   let navigate = useNavigate()
 
   const [formData,setFormData] = useState({
@@ -31,7 +31,6 @@ const Login = ({setToken}) => {
           })
 
       if (error) throw error
-      setToken(data)
       navigate('/dashboard')
 
 

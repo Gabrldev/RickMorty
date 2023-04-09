@@ -3,9 +3,9 @@ import Nav from "../components/Nav/Nav";
 import { Navigate } from "react-router-dom";
 const ProtectedRoute = ({ getRandon, onSearch, children}) => {
 
-  const user = sessionStorage.getItem('token')
+  const user = localStorage.getItem('sb-uzpmvpjlwmktjtipuxxf-auth-token')
   if(!user){
-    return <Navigate to='/login' />
+    return <Navigate to='/' />
   }
 
   return (

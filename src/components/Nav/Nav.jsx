@@ -2,10 +2,15 @@ import SearchBar from "../SearchBar/SearchBar";
 import { NavLink } from "react-router-dom";
 import style from "../styles/nav.module.css";
 import Logo from "../../assets/logo.png";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { supabase } from "../../client/client";
-import { redirect } from "react-router-dom";
+import { FiLogOut, FiMenu } from "react-icons/fi";
+import { GoChevronLeft } from "react-icons/go";
+import { useNavigate } from "react-router-dom";
+import { BiX } from "react-icons/bi";
+import { useState } from "react";
 const Nav = ({ onSearch, getRandon }) => {
+  const navigate = useNavigate();
   const getRandomNumber = (() => {
     const numbers = Array.from({ length: 826 }, (_, i) => i + 1);
     return () =>
@@ -15,35 +20,85 @@ const Nav = ({ onSearch, getRandon }) => {
   async function logout() {
     await supabase.auth.signOut();
     sessionStorage.removeItem("token");
-    return window.location.href = "/";
+    navigate("/");
   }
+  const [showMenu, setShowMenu] = useState(false);
 
+  const menuClose = () => {
+    setShowMenu(!showMenu);
+  };
+
+  console.log(showMenu);
   const ruta = useLocation();
   return (
-    <header className={style.search}>
-      <img src={Logo} alt="" width="100px" />
-      {ruta.pathname === "/dashboard" ? (
-        <SearchBar onSearch={onSearch} getRandon={getRandon} />
-      ) : null}
+    <>
+      <div className={showMenu ? style.menuMb : style.menuActive}>
+        <BiX className={style.iconClose} onClick={menuClose} />
+        <ul>
+          <li>
+            <NavLink to="/dashboard" className={style.back} onClick={menuClose}>
+              <GoChevronLeft />
+              Back
+            </NavLink>
+          </li>
+          <li>
+            <button
+              onClick={() => getRandon(getRandomNumber())}
+              className={style.back}
+            >
+              Get Random
+            </button>
+          </li>
+          <li>
+            <NavLink to="/favorite" onClick={menuClose} className={style.back}>
+              My Favorite
+            </NavLink>
+          </li>
 
-      {ruta.pathname === "/dashboard" ? (
-        <button
-          onClick={() => getRandon(getRandomNumber())}
-          className={style.getrandom}
-        >
-          Get Random
-        </button>
-      ) : (
-        <>
+          <li>
+            <button onClick={logout} className={style.back}>
+              <FiLogOut />
+              Logout
+            </button>
+          </li>
+        </ul>
+      </div>
+      <header className={style.search}>
+        <FiMenu className={style.iconMenu} onClick={menuClose} />
+        <div className={style.boxHeader}>
+          <img
+            src={Logo}
+            alt=""
+            style={{ width: "100px", objectFit: "contain" }}
+          />
+          {ruta.pathname === "/dashboard" && <SearchBar onSearch={onSearch} />}
+        </div>
+
+        <div className={style.boxMv}>
+          {ruta.pathname === "/dashboard" && (
+            <button
+              onClick={() => getRandon(getRandomNumber())}
+              className={style.getrandom}
+            >
+              Get Random
+            </button>
+          )}
+          {ruta.pathname === "/dashboard" && (
+            <NavLink to="/favorite">My Favorite</NavLink>
+          )}
+        </div>
+        <div className={style.aside}>
           <NavLink to="/dashboard" className={style.back}>
+            <GoChevronLeft />
             Back
           </NavLink>
-          <button onClick={logout} className={style.back}>
-            Logout
-          </button>
-        </>
-      )}
-    </header>
+          <FiLogOut
+            onClick={logout}
+            style={{ color: "#ffffff80", fontSize: "20px", cursor: "pointer" }}
+          />
+        </div>
+      </header>
+    </>
   );
 };
 
