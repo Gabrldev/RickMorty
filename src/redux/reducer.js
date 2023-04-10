@@ -1,13 +1,6 @@
 const initialState = {
   myFavorite: [],
-  chararacters: [
-    {
-      id: 1,
-      name: "Rick Sanchez",
-      status: "Alive",
-      species: "Human",
-    }
-  ],
+  chararacters: [],
   
 };
 
@@ -20,6 +13,10 @@ const rootReducer = (state = initialState, action) => {
     case "REMOVE_FAVORITE":
         return {
             ...state, myFavorite: state.myFavorite.filter((item) => item.id !== action.payload)
+        }
+    case "CHARACTERS":
+        return {
+            ...state, chararacters: action.payload
         }
   
     default:

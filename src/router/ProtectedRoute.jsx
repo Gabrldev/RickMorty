@@ -8,7 +8,6 @@ const ProtectedRoute = ({ getRandon, onSearch, children}) => {
 
   useEffect(()=>{
     supabase.auth.onAuthStateChange((event, session) => {
-      console.log(session)
       if (session) {
         navigate("/dashboard");
       }else{
