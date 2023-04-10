@@ -5,7 +5,6 @@ import style from './style.module.css'
 
 const MyFavorite = () => {
   const favorite = useSelector((state) => state.myFavorite);
-  const character = useSelector((state) => state.characters);
   return(
     <div className={style.container}>
       {favorite.map((character) => {

@@ -11,6 +11,7 @@ import store from "../redux/store";
 import MyFavorite from "../components/MyFavorite/MyFavorite";
 import Register from "../components/Login/Register";
 import Login from "../components/Login/Login";
+import { Navigate } from "react-router-dom";
 
 
 const Router = () => {
@@ -61,7 +62,7 @@ const Router = () => {
     const notify = () => toast.success("Personaje eliminado con exito!");
     notify();
   };
-
+  const user = localStorage.getItem('sb-uzpmvpjlwmktjtipuxxf-auth-token')
   return (
     <Provider store={store}>
     <BrowserRouter>
@@ -72,8 +73,8 @@ const Router = () => {
           <Route path="/favorite" element={<MyFavorite/>} />
         </Route>
         <Route path="*" element={<Erro404 />} />
-        <Route path="/register" element={<Register/>} />
-        <Route path="/" element={<Login/>} />
+        <Route path="/register" element={user && <Navigate to='/dashboard' />} />
+        <Route path="/" element={user && <Navigate to='/dashboard' />} />
       </Routes>
     </BrowserRouter>
     </Provider>

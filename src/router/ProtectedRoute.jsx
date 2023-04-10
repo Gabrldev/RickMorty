@@ -5,7 +5,7 @@ const ProtectedRoute = ({ getRandon, onSearch, children}) => {
 
   const user = localStorage.getItem('sb-uzpmvpjlwmktjtipuxxf-auth-token')
   if(!user){
-    return <Navigate to='/' />
+    return <Navigate to='/login' />
   }
 
   return (
