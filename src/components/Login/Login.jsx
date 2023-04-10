@@ -35,7 +35,6 @@ const Login = () => {
 
       if (error) throw error;
       navigate("/dashboard");
-
     } catch (error) {
       alert(error);
     }
@@ -60,7 +59,7 @@ const Login = () => {
           <h1 className={style.title}>Welcome to Rick and Morty</h1>
           <span className={style.spanLogin}>Login your account</span>
           <div className={style.inputContainer}>
-            <FiMail style={{ fontSize: "24px", marginRight: "6px" }} />
+            <FiMail className={style.fimail} />
             <input
               type="text"
               placeholder="Email..."
@@ -70,7 +69,7 @@ const Login = () => {
             />
           </div>
           <div className={style.inputContainer + " " + style.inputPassword}>
-            <FiLock style={{ fontSize: "24px", marginRight: "6px" }} />
+            <FiLock className={style.lock} />
             <input
               type={showPass ? "text" : "password"}
               placeholder="Password..."
@@ -80,76 +79,40 @@ const Login = () => {
             />
             {showPass ? (
               <FiEye
-                style={{
-                  position: "absolute",
-                  right: "25px",
-                  fontSize: "24px",
-                }}
+              className={style.eye} 
                 onClick={handleShowPass}
               />
             ) : (
               <FiEyeOff
                 onClick={handleShowPass}
-                style={{
-                  position: "absolute",
-                  right: "25px",
-                  fontSize: "24px",
-                }}
+                className={style.eyeLock} 
               />
             )}
           </div>
           <div className={style.forgotPassword}>
-            <div style={{ display: "flex" }}>
+            <div style={{ display: "flex", alignItems: "center" }}>
               <div className={style.boxR} style={{ marginRight: "7px" }} />
-              <span
-                style={{
-                  fontFamily: "Poppins",
-                  fontSize: "15px",
-                  fontWeight: "400",
-                  color: "#ffffff33",
-                }}
-              >
-                Remember password
-              </span>
+              <span style={{ color: "#ffffff33" }}>Remember password</span>
             </div>
-            <span style={{ cursor: "pointer" }}>Forgot password</span>
+            <span className={style.forgotP}>Forgot password</span>
           </div>
           <button type="submit" className={style.btnLogin}>
             Login
           </button>
           <div className={style.loginWhith}>
-            <span
-              style={{
-                fontFamily: "Poppins",
-                fontSize: "15px",
-                fontWeight: "400",
-                color: "#ffffff33",
-                marginRight: "12px",
-              }}
-            >
-              Login whith
-            </span>
+            <span className={style.loginW}>Login whith</span>
             <div className={style.continLogin}>
               <div className={style.IconBox}>
-                <BsGoogle style={{ fontSize: "15px" }} />
+                <BsGoogle className={style.google} />
               </div>
               <div className={style.IconBox}>
-                <BsGithub style={{ fontSize: "15px" }} />
+                <BsGithub className={style.github} />
               </div>
             </div>
           </div>
           <div className={style.register}>
-            <span
-              style={{
-                fontFamily: "Poppins",
-                fontSize: "15px",
-                fontWeight: "400",
-                color: "#ffffff33",
-              }}
-            >
-              You do not have an account?
-              <span className={style.register2}>Register</span>
-            </span>
+            <span>You do not have an account?</span>
+            <span className={style.register2}>Register</span>
           </div>
         </form>
         <div className={style.rick}>

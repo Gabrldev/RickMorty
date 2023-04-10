@@ -3,12 +3,11 @@
   display: flex;
   justify-content: start;
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 200px);
   padding-left: 190px;
   padding-right: 170px;
   align-items: center;
   transition: all 0.5s ease-in-out;
- 
 }
 .form {
   display: flex;
@@ -43,7 +42,7 @@
   margin-bottom: 60px;
 }
 .input {
-    color: white;
+  color: white;
   background: transparent;
   border: none;
   outline: none;
@@ -59,10 +58,28 @@ input:-webkit-autofill:focus {
   display: flex;
   align-items: center;
   width: 503px;
-  height: 69px;
+  height: 70px;
   background: #111111;
   color: rgba(255, 255, 255, 0.2);
   border-radius: 27px;
+}
+.fimail{
+  font-size: 24px;
+  margin-right: 15px;
+}
+.lock{
+  font-size: 24px;
+  margin-right: 15px;
+}
+.eye{
+  font-size: 24px;
+  position: absolute;
+  right: 20px;
+}
+.eyeLock{
+  font-size: 24px;
+  position: absolute;
+  right: 20px;
 }
 .input::placeholder {
   color: rgba(255, 255, 255, 0.2);
@@ -85,12 +102,13 @@ input:-webkit-autofill:focus {
   align-items: center;
   justify-content: space-between;
   color: #84bdba;
-  margin-bottom: 35px;
 }
+
 .btnLogin {
   cursor: pointer;
   width: 100%;
   height: 70px;
+  margin-top: 40px;
   background: #111111;
   border-radius: 27px;
   outline: none;
@@ -99,6 +117,7 @@ input:-webkit-autofill:focus {
   color: white;
 }
 .IconBox {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -109,9 +128,12 @@ input:-webkit-autofill:focus {
   border-radius: 4px;
 }
 .loginWhith {
+  gap: 20px;
   display: flex;
+  align-items: center;
   margin-top: 40px;
   margin-bottom: 37px;
+  color: rgba(255, 255, 255, 0.2);
 }
 .continLogin {
   display: flex;
@@ -120,30 +142,98 @@ input:-webkit-autofill:focus {
 
 .register2 {
   color: #84bdba;
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 500;
-  margin-left: 20px;
-    cursor: pointer;
 }
-.rick{
-    filter: drop-shadow(0px 4px 30px rgba(170, 217, 69, 0.27));
+.register{
+  font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 22px;
+display: flex;
+gap: 30px;
+
+
+color: rgba(255, 255, 255, 0.2);
+
+}
+.rick {
+  filter: drop-shadow(0px 4px 30px rgba(170, 217, 69, 0.27));
 }
 
-@media(max-width: 1200px){
-  .container{
-    padding-left: 50px;
-    padding-right: 50px;
-  }
-}
-@media(max-width: 970px){
-  .container{
+@media (max-width: 450px) {
+  .container {
+    padding-left: 0px;
+    padding-right: 0px;
     justify-content: center;
   }
-  .rick{
+  .rick {
     display: none;
   }
-  .form{
-    transform: scale(0.75);
+  .form {
+    width: 327px;
+    height: 455px;
+    padding-top: 46px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .title {
+    font-size: 16px;
+    width: 120px;
+    line-height: 100.5%;
+    height: fit-content;
+
+  }
+  .spanLogin {
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+
+  .inputContainer {
+    width: 279px;
+    height: 40px;
+
+  }
+  .inputPassword{
+    margin-top: 20px;
+    margin-bottom: 7px;
+  }
+  
+
+  .forgotPassword{
+    align-items: center;
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+  .input {
+    font-size: 12px;
+  }
+  .btnLogin{
+    font-size: 14px;
+    margin-bottom: 0;
+    margin-top: 0px;
+    height: 40px;
+  }
+  .loginWhith{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 12px;
+
+    
+  }
+  .IconBox{
+    width: 30px;
+  }
+  .register{
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .fimail, .lock, .eye, .eyeLock{
+    font-size: 16px;
+  }
+  .boxR{
+    width: 20px;
+    height: 20px;
   }
 }
