@@ -73,8 +73,8 @@ const Router = () => {
           <Route path="/favorite" element={<MyFavorite/>} />
         </Route>
         <Route path="*" element={<Erro404 />} />
-        <Route path="/register" element={user && <Navigate to='/dashboard' />} />
-        <Route path="/" element={user && <Navigate to='/dashboard' />} />
+        <Route path="/register" element={user ?<Navigate to='/dashboard' /> : <Register />} />
+        <Route path="/" element={user? <Navigate to='/dashboard' />: <Login />}/>
       </Routes>
     </BrowserRouter>
     </Provider>
