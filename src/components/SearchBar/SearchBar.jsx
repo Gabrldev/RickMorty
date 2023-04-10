@@ -1,12 +1,15 @@
 import { useState } from "react";
 import style from "../styles/nav.module.css";
-export default function SearchBar({ onSearch }) {
+import { useSelector } from "react-redux"
+ function SearchBar({ onSearch }) {
+
   const [id, setId] = useState("");
+  const character = useSelector((state) => state.characters);
 
   const handleChange = (e) => {
     setId(e.target.value);
   };
-
+  
   return (
     <div className={style.form}>
       <input onChange={handleChange} placeholder="Ingresa el id a buscar" />
@@ -21,3 +24,4 @@ export default function SearchBar({ onSearch }) {
     </div>
   );
 }
+export default SearchBar;

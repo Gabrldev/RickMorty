@@ -36,7 +36,6 @@ const Login = () => {
       if (error) throw error;
       navigate("/dashboard");
 
-      //   alert('Check your email for verification link')
     } catch (error) {
       alert(error);
     }

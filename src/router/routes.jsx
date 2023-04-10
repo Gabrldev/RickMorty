@@ -6,11 +6,11 @@ import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import ProtectedRoute from "./ProtectedRoute";
-import Register from "../components/Auth/Register.jsx";
-import Login from "../components/Auth/Login.jsx";
 import { Provider } from "react-redux";
 import store from "../redux/store";
 import MyFavorite from "../components/MyFavorite/MyFavorite";
+import Register from "../components/Login/Register";
+import Login from "../components/Login/Login";
 
 
 const Router = () => {
@@ -73,7 +73,7 @@ const Router = () => {
         </Route>
         <Route path="*" element={<Erro404 />} />
         <Route path="/register" element={<Register/>} />
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Login/>} />
       </Routes>
     </BrowserRouter>
     </Provider>

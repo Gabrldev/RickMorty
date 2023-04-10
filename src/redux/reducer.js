@@ -1,5 +1,14 @@
 const initialState = {
   myFavorite: [],
+  chararacters: [
+    {
+      id: 1,
+      name: "Rick Sanchez",
+      status: "Alive",
+      species: "Human",
+    }
+  ],
+  
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -12,6 +21,7 @@ const rootReducer = (state = initialState, action) => {
         return {
             ...state, myFavorite: state.myFavorite.filter((item) => item.id !== action.payload)
         }
+  
     default:
       return { ...state };
   }

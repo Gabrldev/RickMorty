@@ -27,8 +27,6 @@ const Nav = ({ onSearch, getRandon }) => {
   const menuClose = () => {
     setShowMenu(!showMenu);
   };
-
-  console.log(showMenu);
   const ruta = useLocation();
   return (
     <>

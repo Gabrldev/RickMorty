@@ -7,6 +7,8 @@
   padding-left: 190px;
   padding-right: 170px;
   align-items: center;
+  transition: all 0.5s ease-in-out;
+ 
 }
 .form {
   display: flex;
@@ -18,6 +20,7 @@
   padding-top: 95px;
   padding-left: 43px;
   padding-right: 43px;
+  transform: scale(0.8);
 }
 .title {
   color: #fff;
@@ -125,4 +128,22 @@ input:-webkit-autofill:focus {
 }
 .rick{
     filter: drop-shadow(0px 4px 30px rgba(170, 217, 69, 0.27));
+}
+
+@media(max-width: 1200px){
+  .container{
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+@media(max-width: 970px){
+  .container{
+    justify-content: center;
+  }
+  .rick{
+    display: none;
+  }
+  .form{
+    transform: scale(0.75);
+  }
 }
