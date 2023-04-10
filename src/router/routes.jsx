@@ -11,7 +11,6 @@ import store from "../redux/store";
 import MyFavorite from "../components/MyFavorite/MyFavorite";
 import Register from "../components/Login/Register";
 import Login from "../components/Login/Login";
-import { Navigate } from "react-router-dom";
 
 
 const Router = () => {
@@ -73,8 +72,8 @@ const Router = () => {
           <Route path="/favorite" element={<MyFavorite/>} />
         </Route>
         <Route path="*" element={<Erro404 />} />
-        <Route path="/register" element={user ?<Navigate to='/dashboard' /> : <Register />} />
-        <Route path="/" element={user? <Navigate to='/dashboard' />: <Login />}/>
+        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<Login />}/>
       </Routes>
     </BrowserRouter>
     </Provider>

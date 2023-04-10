@@ -1,13 +1,22 @@
 import { useState } from "react";
 import { supabase } from "../../client/client";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Rick from "../../assets/rick2.png";
 import logo from "../../assets/logo.png";
 import style from "./style.module.css";
 import { FiMail, FiLock, FiEye, FiEyeOff } from "react-icons/fi";
 import { BsGoogle, BsGithub } from "react-icons/bs";
+import { useEffect } from "react";
+
 const Login = () => {
+  useEffect(()=>{
+    supabase.auth.onAuthStateChange((event, session) => {
+      console.log(session)
+      if (session) {
+        navigate("/dashboard");
+      }
+    })
+  },[])
   let navigate = useNavigate();
   const [showPass, setShowPass] = useState(false);
   const [formData, setFormData] = useState({
@@ -41,6 +50,12 @@ const Login = () => {
   }
   function handleShowPass() {
     setShowPass(!showPass);
+  }
+
+  async function signInWithGoogle() {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+    })
   }
   return (
     <>
@@ -102,7 +117,7 @@ const Login = () => {
           <div className={style.loginWhith}>
             <span className={style.loginW}>Login whith</span>
             <div className={style.continLogin}>
-              <div className={style.IconBox}>
+              <div className={style.IconBox} onClick={signInWithGoogle}>
                 <BsGoogle className={style.google} />
               </div>
               <div className={style.IconBox}>

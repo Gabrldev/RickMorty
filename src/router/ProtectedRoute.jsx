@@ -1,13 +1,22 @@
 import { Outlet } from "react-router-dom";
 import Nav from "../components/Nav/Nav";
 import { Navigate } from "react-router-dom";
+import { useEffect } from "react";
+import { supabase } from "../client/client";
+import { useNavigate } from "react-router-dom";
 const ProtectedRoute = ({ getRandon, onSearch, children}) => {
 
-  const user = localStorage.getItem('sb-uzpmvpjlwmktjtipuxxf-auth-token')
-  if(!user){
-    return <Navigate to='/login' />
-  }
-
+  useEffect(()=>{
+    supabase.auth.onAuthStateChange((event, session) => {
+      console.log(session)
+      if (session) {
+        navigate("/dashboard");
+      }else{
+        navigate("/");
+      }
+    })
+  },[])
+const navigate = useNavigate();
   return (
     <div>
       {children ? (
