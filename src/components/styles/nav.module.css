@@ -10,17 +10,18 @@
   backdrop-filter: blur(50px);
   padding-left: 50px;
   padding-right: 50px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 .boxHeader{
   display: flex;
+  align-items: center;
   gap: 100px;
 }
 .form {
-  margin-top: 20px;
   background: #1a1a1a;
   padding: 10px 30px;
   border-radius: 25px;
-  margin-bottom: 20px;
   position: relative;
   top: 0;
 }
@@ -57,13 +58,12 @@
   object-fit: cover;
 }
 .getrandom {
-  color: #000;
-  cursor: pointer;
+  width: 100px;
+  height: 40px;
   border: none;
   outline: none;
-  padding: 10px 20px;
   border-radius: 15px;
-  transition: 0.5s all ease;
+  transition: all .5s ease;
 }
 .getrandom:hover {
   transform: scale(1.06);
@@ -97,6 +97,11 @@
   color: #ffffff7d;
   cursor: pointer;
 }
+.aside{
+  display: flex; 
+  align-items: center;
+  gap: 30px;
+}
 
 .iconMenu{
   cursor: pointer;
@@ -107,9 +112,21 @@
   font-size: 25px;
   color: #ffffff7d;
 }
+.myFav{
+  color: rgba(255, 255, 255, 0.808);
+  font-weight: 600;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.myFav:hover{
+  color: #ffffff81;
+}
 @media (max-width: 920px) {
   .search {
     flex-direction: column;
+    padding-top: 0;
+    padding-bottom: 0;
   }
   .getrandom{
     margin-bottom: 20px;
@@ -124,7 +141,7 @@
   }
   .boxHeader{
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
     justify-content: center;
     align-items: center;
   }

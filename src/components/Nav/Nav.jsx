@@ -9,7 +9,9 @@ import { GoChevronLeft } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 import { BiX } from "react-icons/bi";
 import { useState } from "react";
+import {BsFillBookmarkCheckFill} from "react-icons/bs"
 const Nav = ({ onSearch, getRandon }) => {
+  
   const navigate = useNavigate();
   const getRandomNumber = (() => {
     const numbers = Array.from({ length: 826 }, (_, i) => i + 1);
@@ -30,7 +32,7 @@ const Nav = ({ onSearch, getRandon }) => {
   const ruta = useLocation();
   return (
     <>
-      <div className={showMenu ? style.menuMb : style.menuActive}>
+     <div className={showMenu ? style.menuMb : style.menuActive}>
         <BiX className={style.iconClose} onClick={menuClose} />
         <ul>
           <li>
@@ -38,14 +40,6 @@ const Nav = ({ onSearch, getRandon }) => {
               <GoChevronLeft />
               Back
             </NavLink>
-          </li>
-          <li>
-            <button
-              onClick={() => getRandon(getRandomNumber())}
-              className={style.back}
-            >
-              Get Random
-            </button>
           </li>
           <li>
             <NavLink to="/favorite" onClick={menuClose} className={style.back}>
@@ -61,6 +55,8 @@ const Nav = ({ onSearch, getRandon }) => {
           </li>
         </ul>
       </div>
+
+
       <header className={style.search}>
         <FiMenu className={style.iconMenu} onClick={menuClose} />
         <div className={style.boxHeader}>
@@ -70,9 +66,6 @@ const Nav = ({ onSearch, getRandon }) => {
             style={{ width: "100px", objectFit: "contain" }}
           />
           {ruta.pathname === "/dashboard" && <SearchBar onSearch={onSearch} />}
-        </div>
-
-        <div className={style.boxMv}>
           {ruta.pathname === "/dashboard" && (
             <button
               onClick={() => getRandon(getRandomNumber())}
@@ -81,8 +74,14 @@ const Nav = ({ onSearch, getRandon }) => {
               Get Random
             </button>
           )}
+        </div>
+
+        <div className={style.boxMv}>
           {ruta.pathname === "/dashboard" && (
-            <NavLink to="/favorite">My Favorite</NavLink>
+            <NavLink to="/favorite" className={style.myFav}>
+              My Favorite
+              <BsFillBookmarkCheckFill />
+            </NavLink>
           )}
         </div>
         <div className={style.aside}>

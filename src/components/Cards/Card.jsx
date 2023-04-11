@@ -59,18 +59,20 @@ function Card({
         <img src={image} alt={name} className={style.img} />
         <h2 className={aliveOrDead()}>{status}</h2>
       </div>
+      <div className={style.FavAnM}>
       <Link to={`/details/${id}`}>
         <button className={style.moreIn}>More Info</button>
       </Link>
       {isFav ? (
         <button className={style.fav} onClick={handleFavorite}>
-          ❤️
+          Remove ❤️
         </button>
       ) : (
-        <button className={style.fav} onClick={handleFavorite}>
-          🤍
+        <button className={style.favR} onClick={handleFavorite}>
+          Add 🤍
         </button>
       )}
+      </div>
     </div>
   );
 }

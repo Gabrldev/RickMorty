@@ -83,7 +83,6 @@
     cursor: pointer;
     border: none;
     outline: none;
-    margin-top: 5px;
     background: rgb(0, 174, 255);
     color: white;
     padding: 5px 15px;
@@ -91,6 +90,40 @@
     transition: transform 0.5s ease;
 }
 .moreIn:hover{
+    transform: scale(1.05);
+}
+.FavAnM{
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.fav{
+    font-size: 12px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: rgb(255, 255, 255);
+    color: rgb(44, 44, 44);
+    height: 25.56px;
+    width: 80px;
+    transition: transform 0.5s ease;
+    border-radius: 15px;
+}
+.favR{
+    font-size: 12px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: rgb(231, 37, 37);
+    color: rgb(255, 255, 255);
+    height: 25.56px;
+    width: 80px;
+    transition: transform 0.5s ease;
+    border-radius: 15px;
+}
+.fav:hover{
     transform: scale(1.05);
 }
 @keyframes fade{

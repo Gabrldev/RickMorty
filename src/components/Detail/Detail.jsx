@@ -1,23 +1,8 @@
-import axios from "axios";
-import React from "react";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import style from "./detail.module.css";
+import useDatail from "../../hooks/useDetail";
 export default function Detail() {
-  const { id } = useParams();
-
-  const URL_BASE = "https://be-a-rym.up.railway.app/api/character";
-  const API_KEY = "01c65889effb.1b54c5795354ee1b48e5";
-
-  const [character, setCharacter] = useState([]);
-
-  useEffect(() => {
-    axios(`${URL_BASE}/${id}?key=${API_KEY}`).then((res) =>
-      setCharacter(res.data)
-    );
-  }, [id]);
-
+  const character = useDatail();
   return (
     <>
       <div className={style.nameBack}>
@@ -28,7 +13,7 @@ export default function Detail() {
           <section className={style.section}>
             <div>
               <img
-                src={character.image}
+                src={character?.image}
                 alt={character.name}
                 className={style.image}
               />
@@ -37,22 +22,22 @@ export default function Detail() {
               <h2 style={{ color: "#00000091" }}>Info</h2>
               <div className={style.boxAl}>
                 <h1 className={style.nameP}>
-                  Name: <span>{character.name}</span>{" "}
+                  Name: <span>{character.name}</span>
                 </h1>
               </div>
               <div className={style.boxAl2}>
                 <h1 className={style.nameP}>
-                  Origin: <span>{character.origin.name}</span>{" "}
+                  Origin: <span>{character.origin.name}</span>
                 </h1>
               </div>
               <div className={style.boxAl}>
                 <h1 className={style.nameP}>
-                  Gender: <span>{character.gender}</span>{" "}
+                  Gender: <span>{character.gender}</span>
                 </h1>
               </div>
               <div className={style.boxAl2}>
                 <h1 className={style.nameP}>
-                  Status: <span>{character.status}</span>{" "}
+                  Status: <span>{character.status}</span>
                 </h1>
               </div>
             </div>
