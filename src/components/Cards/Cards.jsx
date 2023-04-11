@@ -3,10 +3,16 @@ import style from "../styles/cards.module.css";
 import { useSelector } from "react-redux";
 
 export default function Cards({ onClose }) {
-  const characters = useSelector((state) => state.chararacters);
+  const characters = useSelector((state) => state.characters);
   return (
 
     <div className={style.container}>
+      <select className={style.filter}>
+        <option value="">Select Option</option>
+        <option value="Alive">Alive</option>
+        <option value="Dead">Dead</option>
+        <option value="unknown">Unknown</option>
+      </select>
 
       {characters.map((character) => {
         return (

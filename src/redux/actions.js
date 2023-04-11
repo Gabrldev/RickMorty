@@ -1,10 +1,4 @@
-export const ADD_FAVORITE = "ADD_FAVORITE";
-export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
-export const DETAIL_CHARACTERS = "DETAIL_CHARACTERS";
-export const CLEAN_DETAIL = "CLEAN_DETAIL";
-export const GET_CHARACTERS = "GET_CHARACTERS";
-export const REMOVE_CHARACTER = "REMOVE_CHARACTER";
-export const RANDOM_CHARACTERS = "RANDOM_CHARACTERS";
+import { ADD_FAVORITE, REMOVE_FAVORITE, DETAIL_CHARACTERS, CLEAN_DETAIL, GET_CHARACTERS, REMOVE_CHARACTER, FILTER_GEN,FILTER_ORDER } from "./types";
 
 export const addFavorite = (character) => {
   return {
@@ -59,4 +53,17 @@ export const removeCharacter = (id) => {
     type: REMOVE_CHARACTER,
     payload: id,
   }
+}
+
+export const filterGen = (gender) => {
+  return {
+    type: FILTER_GEN,
+    payload: gender,
+  };
+}
+export const filterOrder = (order) => {
+  return {
+    type: FILTER_ORDER,
+    payload: order,
+  };
 }

@@ -1,7 +1,8 @@
 const initialState = {
   myFavorite: [],
   chararacterDetail: [],
-  chararacters: [],
+  characters: [],
+  allCharacters: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -29,16 +30,24 @@ const rootReducer = (state = initialState, action) => {
         chararacterDetail: [],
       };
     case "GET_CHARACTERS":
-      return {
-        ...state,
-        chararacters: [...state.chararacters, action.payload],
-      };
+      if (state.characters.find((item) => item.id === action.payload.id)) {
+        return state;
+      } else {
+        return {
+          ...state,
+          characters: [...state.characters, action.payload],
+        };
+      }
     case "REMOVE_CHARACTER":
       return {
         ...state,
-        chararacters: state.chararacters.filter(
+        characters: state.characters.filter(
           (item) => item.id !== action.payload
         ),
+      };
+    case "FILTER_GEN":
+      return {
+        ...state,
       };
     default:
       return { ...state };

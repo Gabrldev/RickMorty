@@ -9,7 +9,7 @@ export default function GetRandom() {
       numbers.splice(Math.floor(Math.random() * numbers.length), 1)[0];
   })();
 
-  const character = useSelector((state) => state.chararacters);
+  const character = useSelector((state) => state.characters);
   const dispatch = useDispatch();
 
   const handleClick = () => {

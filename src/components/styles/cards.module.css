@@ -1,12 +1,37 @@
-.container{
-    display: flex;
-    width: 100%;
-    padding-left: 100px;
-    padding-right: 100px;
-    justify-content: center;
-    align-items: start;
-    flex-wrap: wrap;
-    gap: 30px;
-    padding-top: 100px;
-    padding-bottom: 100px;
+.container {
+  display: flex;
+  width: 100%;
+  padding-left: 100px;
+  padding-right: 100px;
+  justify-content: center;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+.filter {
+  position: absolute;
+  top: 150px;
+  appearance: none;
+  line-height: 20px;
+  -webkit-appearance: none;
+  overflow: visible;
+  background: #1a1a1a;
+  border: none;
+  color: #fff;
+  width: 200px;
+    height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 15px;
+  left: 220px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: .3s ease;
+}
+.filter:hover {
+  cursor: pointer;
+  transform: scale(1.05);
 }

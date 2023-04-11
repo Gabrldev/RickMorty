@@ -100,7 +100,7 @@ const mapDispatchToProps = (dispatch) => {
 const napStateToProps = (state) => {
   return {
     myFavorite: state.myFavorite,
-    chararacters : state.chararacters
+    characters : state.characters
   };
 };
 export default connect(napStateToProps, mapDispatchToProps)(Card);

@@ -6,14 +6,14 @@ import { toast } from "react-hot-toast";
 
 function SearchBar() {
 
-  const character = useSelector((state) => state.chararacters);
+  const character = useSelector((state) => state.characters);
   const [id, setId] = useState("");
   const dispatch = useDispatch();
 
    const handleChange = (e) => {
     setId(e.target.value);
   };
- const handleSubmit = () => {
+ const handleSubmit =  () => {
     if (id === "") {
       const notify = () => toast.error("¡Debes de ingresar un ID!");
       notify();
