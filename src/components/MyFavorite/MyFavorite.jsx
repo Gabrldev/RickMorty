@@ -10,6 +10,7 @@ const MyFavorite = () => {
       {favorite.map((character) => {
         return(
           <Card 
+          key={character.id}
           name={character.name}
           status={character.status}
           image={character.image}

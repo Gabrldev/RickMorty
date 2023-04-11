@@ -1,24 +1,42 @@
-import { useState } from "react";
 import style from "../styles/nav.module.css";
-import { useSelector } from "react-redux"
- function SearchBar({ onSearch }) {
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCharacters } from "../../redux/actions";
+import { toast } from "react-hot-toast";
 
+function SearchBar() {
+
+  const character = useSelector((state) => state.chararacters);
   const [id, setId] = useState("");
-  const character = useSelector((state) => state.characters);
+  const dispatch = useDispatch();
 
-  const handleChange = (e) => {
+   const handleChange = (e) => {
     setId(e.target.value);
   };
-  
+ const handleSubmit = () => {
+    if (id === "") {
+      const notify = () => toast.error("¡Debes de ingresar un ID!");
+      notify();
+    }
+    else if (id > 826 || id < 1) {
+      const notify = () => toast.error("¡El ID debe estar entre 1 y 826!");
+      notify();
+    }
+    else if (character.find((char) => char.id === id)) {
+      const notify = () => toast.error("¡Ya existe este personaje!");
+      notify();
+    } else {
+      dispatch(getCharacters(id));
+      const notify = () => toast.success("Personaje agregado con exito!");
+      notify();
+    }
+
+  };
+
   return (
     <div className={style.form}>
       <input onChange={handleChange} placeholder="Ingresa el id a buscar" />
-      <button
-        className={style.button}
-        onClick={() => {
-          onSearch(id);
-        }}
-      >
+      <button className={style.button} onClick={handleSubmit}>
         +
       </button>
     </div>

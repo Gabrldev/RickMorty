@@ -17,9 +17,6 @@ function useDatail(){
 
     return character
 }
-function onSearch(){
 
-
-}
 export default useDatail
 

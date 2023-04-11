@@ -9,15 +9,10 @@ import { GoChevronLeft } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 import { BiX } from "react-icons/bi";
 import { useState } from "react";
-import {BsFillBookmarkCheckFill} from "react-icons/bs"
-const Nav = ({ onSearch, getRandon }) => {
-  
+import { BsFillBookmarkCheckFill } from "react-icons/bs";
+import GetRandom from "../GetRandom/GetRandom";
+const Nav = () => {
   const navigate = useNavigate();
-  const getRandomNumber = (() => {
-    const numbers = Array.from({ length: 826 }, (_, i) => i + 1);
-    return () =>
-      numbers.splice(Math.floor(Math.random() * numbers.length), 1)[0];
-  })();
 
   async function logout() {
     await supabase.auth.signOut();
@@ -32,7 +27,7 @@ const Nav = ({ onSearch, getRandon }) => {
   const ruta = useLocation();
   return (
     <>
-     <div className={showMenu ? style.menuMb : style.menuActive}>
+      <div className={showMenu ? style.menuMb : style.menuActive}>
         <BiX className={style.iconClose} onClick={menuClose} />
         <ul>
           <li>
@@ -56,7 +51,6 @@ const Nav = ({ onSearch, getRandon }) => {
         </ul>
       </div>
 
-
       <header className={style.search}>
         <FiMenu className={style.iconMenu} onClick={menuClose} />
         <div className={style.boxHeader}>
@@ -65,15 +59,8 @@ const Nav = ({ onSearch, getRandon }) => {
             alt=""
             style={{ width: "100px", objectFit: "contain" }}
           />
-          {ruta.pathname === "/dashboard" && <SearchBar onSearch={onSearch} />}
-          {ruta.pathname === "/dashboard" && (
-            <button
-              onClick={() => getRandon(getRandomNumber())}
-              className={style.getrandom}
-            >
-              Get Random
-            </button>
-          )}
+          {ruta.pathname === "/dashboard" && <SearchBar  />}
+          {ruta.pathname === "/dashboard" && <GetRandom />}
         </div>
 
         <div className={style.boxMv}>
@@ -85,10 +72,12 @@ const Nav = ({ onSearch, getRandon }) => {
           )}
         </div>
         <div className={style.aside}>
-          <NavLink to="/dashboard" className={style.back}>
-            <GoChevronLeft />
-            Back
-          </NavLink>
+          {ruta.pathname === "/dashboard"
+            ? null
+            : <NavLink to="/dashboard" className={style.back}>
+                <GoChevronLeft />
+                Back
+              </NavLink>}
           <FiLogOut
             onClick={logout}
             style={{ color: "#ffffff80", fontSize: "20px", cursor: "pointer" }}

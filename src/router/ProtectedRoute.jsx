@@ -1,11 +1,10 @@
 import { Outlet } from "react-router-dom";
 import Nav from "../components/Nav/Nav";
-import { Navigate } from "react-router-dom";
 import { useEffect } from "react";
 import { supabase } from "../client/client";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-const ProtectedRoute = ({ getRandon, onSearch, children }) => {
+const ProtectedRoute = ({ children }) => {
   const rutas = useParams();
   useEffect(() => {
     supabase.auth.onAuthStateChange((event, session) => {
@@ -24,7 +23,7 @@ const ProtectedRoute = ({ getRandon, onSearch, children }) => {
         children
       ) : (
         <>
-          <Nav getRandon={getRandon} onSearch={onSearch}  />
+          <Nav  />
           <Outlet />
         </>
       )}
