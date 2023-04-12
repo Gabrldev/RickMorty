@@ -126,6 +126,14 @@
 .fav:hover{
     transform: scale(1.05);
 }
+.id{
+    position: absolute;
+    top: 20px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    opacity: 0.03;
+}
 @keyframes fade{
     from{
         transform: translateX(1600px);

@@ -13,7 +13,7 @@ function useDatail(){
           dispatch(cleanDetail())
         }
       }, [id]);
-    const character = useSelector((state) => state.chararacterDetail);
+    const character = useSelector((state) => state.characterDetail);
 
     return character
 }

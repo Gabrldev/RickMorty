@@ -1,22 +1,21 @@
 import style from "../styles/card.module.css";
 import { Link, useLocation } from "react-router-dom";
-import { connect } from "react-redux";
-import { addFavorite, removeFavorite, removeCharacter } from "../../redux/actions";
 import { useMemo } from "react";
 import { toast } from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { addFavorite, removeFavorite, removeCharacter } from "../../redux/actions";
 
-function Card({
-  name,
-  status,
-  image,
-  id,
-  gender,
-  addFavorite,
-  removeFavorite,
-  myFavorite,
-  removeCharacter,
-}) {
-  const cardStatus = status === "Alive" ? style.alive : status === "Dead" ? style.dead : style.unknown;
+function Card({ name, status, image, id, gender }) {
+  const dispatch = useDispatch();
+  const myFavorite = useSelector((state) => state.myFavorite);
+  const characters = useSelector((state) => state.characters);
+
+  const cardStatus =
+    status === "Alive"
+      ? style.alive
+      : status === "Dead"
+      ? style.dead
+      : style.unknown;
 
   const isFavorite = useMemo(() => {
     return myFavorite.find((char) => char.id === id);
@@ -24,16 +23,16 @@ function Card({
 
   const handleFavorites = () => {
     if (isFavorite) {
-      removeFavorite(id);
-      toast.success("Personaje removido de favoritos");
+      dispatch(removeFavorite(id));
+      toast.error("Personaje removido de favoritos");
     } else {
-      addFavorite({ name, status, image, id,gender });
+      dispatch(addFavorite({ name, status, image, id, gender }));
       toast.success("Personaje añadido a favoritos");
     }
   };
 
   const handleRemoveCharacter = () => {
-    removeCharacter(id);
+    dispatch(removeCharacter(id));
     toast.success("Personaje eliminado con exito!");
   };
 
@@ -41,8 +40,9 @@ function Card({
 
   return (
     <div className={style.container}>
+      <span className={style.id}>#{id}</span>
       {location.pathname === "/dashboard" ? (
-        <button className={style.btn} onClick={() => handleRemoveCharacter()}>
+        <button className={style.btn} onClick={handleRemoveCharacter}>
           X
         </button>
       ) : null}
@@ -56,11 +56,11 @@ function Card({
           <button className={style.moreIn}>More Info</button>
         </Link>
         {isFavorite ? (
-          <button className={style.fav} onClick={() => handleFavorites()}>
+          <button className={style.fav} onClick={handleFavorites}>
             Remove ❤️
           </button>
         ) : (
-          <button className={style.favR} onClick={() => handleFavorites()}>
+          <button className={style.favR} onClick={handleFavorites}>
             Add 🤍
           </button>
         )}
@@ -68,23 +68,4 @@ function Card({
     </div>
   );
 }
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addFavorite: (character) => {
-      dispatch(addFavorite(character));
-    },
-    removeFavorite: (id) => {
-      dispatch(removeFavorite(id));
-    },
-    removeCharacter: (id) => {
-      dispatch(removeCharacter(id));
-    }
-  };
-};
-const napStateToProps = (state) => {
-  return {
-    myFavorite: state.myFavorite,
-    characters : state.characters
-  };
-};
-export default connect(napStateToProps, mapDispatchToProps)(Card);
+export default Card;

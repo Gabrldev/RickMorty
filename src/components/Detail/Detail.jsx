@@ -3,6 +3,7 @@ import style from "./detail.module.css";
 import useDatail from "../../hooks/useDetail";
 export default function Detail() {
   const character = useDatail();
+  
   return (
     <>
       <div className={style.nameBack}>

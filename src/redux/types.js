@@ -7,3 +7,5 @@ export const REMOVE_CHARACTER = "REMOVE_CHARACTER";
 export const RANDOM_CHARACTERS = "RANDOM_CHARACTERS";
 export const FILTER= "FILTER";
 export const ORDER= "ORDER";
+export const CLEAN_FILTER= 'CLEAN_FILTER'
+export const RESET = 'RESET'

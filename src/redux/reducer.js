@@ -11,7 +11,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         allCharacters: [...state.allCharacters, action.payload],
-        myFavorite: [...state.myFavorite, action.payload],
+        myFavorite: [...state.allCharacters, action.payload],
       };
     case "REMOVE_FAVORITE":
       return {
@@ -56,21 +56,36 @@ const rootReducer = (state = initialState, action) => {
         myFavorite: filterGender,
       };
     case "ORDER":
-      const orderCopy = [...state.myFavorite];
-      const order = orderCopy.sort((a, b) => {
-        if (a.id > b.id) {
-          return action.payload === "Ascendente" ? 1 : -1;
-        } else if (a.id < b.id) {
-          return action.payload === "Ascendente" ? -1 : 1;
-        } else {
-          return 0;
-        }
-      });
+      const orderCopy = [...state.allCharacters];
+      const orderId = orderCopy;
+      if (action.payload === "Ascendente") {
+        return {
+          ...state,
+          myFavorite: orderId.sort((a, b) => a.id - b.id),
+        };
+      } else if (action.payload === "Descendente") {
+        return {
+          ...state,
+          myFavorite: orderId.sort((a, b) => b.id - a.id),
+        };
+      }
+
       return {
         ...state,
-        myFavorite: order,
+        myFavorite: orderId,
       };
-    default:
+    case "CLEAN_FILTER":
+      return {
+        ...state,
+        myFavorite: [...state.allCharacters],
+      };
+
+    case "RESET":
+      return {
+        ...state,
+        myFavorite: [...state.allCharacters],
+      }
+      default:
       return state;
   }
 };
