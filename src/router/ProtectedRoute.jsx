@@ -1,32 +1,32 @@
-import { Outlet } from "react-router-dom";
-import Nav from "../components/Nav/Nav";
-import { useEffect } from "react";
-import { supabase } from "../client/client";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from 'react-router-dom'
+import Nav from '../components/Nav/Nav'
+import { useEffect } from 'react'
+import { supabase } from '../client/client'
+
 const ProtectedRoute = ({ children }) => {
   useEffect(() => {
+    console.log('ProtectedRoute')
     supabase.auth.onAuthStateChange((event, session) => {
       switch (session) {
         case null:
-          navigate("/");
+          navigate('/')
+          break
         default:
-          break;
+          break
       }
-    });
-  }, []);
-  const navigate = useNavigate();
+    })
+  }, [])
+  const navigate = useNavigate()
   return (
     <div>
-      {children ? (
-        children
-      ) : (
+      {children || (
         <>
-          <Nav  />
+          <Nav />
           <Outlet />
         </>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default ProtectedRoute;
+export default ProtectedRoute

@@ -1,4 +1,5 @@
 .container{
+    position: relative;
     display: flex;
     gap: 50px;
     padding-left: 100px;
@@ -10,4 +11,36 @@
 }
 .color{
     color: #ffffff80;
+}
+.filter{
+    position: absolute;
+    top: 0;
+    display: flex;
+    gap: 30px;
+}
+.select{
+    position: relative;
+    -webkit-box-shadow: 5px 5px 5px #666;
+    -moz-box-shadow: 5px 5px 5px #666;
+    box-shadow: 5px 5px 5px #666;
+    display:inline-block;
+    font-weight: 500;
+    background: #1a1a1a;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    color: #fff;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+}
+.select::after{
+    content: "x";
+    color: #fff;
+}
+.icon{
+    color: #000;
+}
+.select option{
+    background: rgb(23, 23, 23);
 }

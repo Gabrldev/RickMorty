@@ -9,79 +9,79 @@ import {
   ORDER,
   CLEAN_FILTER,
   RESET
-} from "./types";
+} from './types'
 
 export const addFavorite = (character) => {
   return {
     type: ADD_FAVORITE,
-    payload: character,
-  };
-};
+    payload: character
+  }
+}
 export const removeFavorite = (id) => {
   return {
     type: REMOVE_FAVORITE,
-    payload: id,
-  };
-};
+    payload: id
+  }
+}
 
 export const detailCharacters = (id) => {
   return function (dispatch) {
-    const URL_BASE = "https://be-a-rym.up.railway.app/api/character";
-    const API_KEY = "01c65889effb.1b54c5795354ee1b48e5";
+    const URL_BASE = 'https://be-a-rym.up.railway.app/api/character'
+    const API_KEY = '01c65889effb.1b54c5795354ee1b48e5'
     fetch(`${URL_BASE}/${id}?key=${API_KEY}`)
       .then((response) => response.json())
       .then((data) => {
         dispatch({
           type: DETAIL_CHARACTERS,
-          payload: data,
-        });
-      });
-  };
-};
+          payload: data
+        })
+      })
+  }
+}
 export const cleanDetail = () => {
   return {
-    type: CLEAN_DETAIL,
-  };
-};
+    type: CLEAN_DETAIL
+  }
+}
 
 export const getCharacters = (id) => {
   return function (dispatch) {
-    const URL_BASE = "https://be-a-rym.up.railway.app/api/character";
-    const API_KEY = "01c65889effb.1b54c5795354ee1b48e5";
+    const URL_BASE = 'https://be-a-rym.up.railway.app/api/character'
+    const API_KEY = '01c65889effb.1b54c5795354ee1b48e5'
     fetch(`${URL_BASE}/${id}?key=${API_KEY}`)
       .then((response) => response.json())
       .then((data) => {
         dispatch({
           type: GET_CHARACTERS,
-          payload: data,
-        });
-      });
-  };
-};
+          payload: data
+        })
+      })
+  }
+}
 
 export const removeCharacter = (id) => {
   return {
     type: REMOVE_CHARACTER,
-    payload: id,
-  };
-};
+    payload: id
+  }
+}
 
 export const filterCards = (gender) => {
   return {
     type: FILTER,
-    payload: gender,
-  };
-};
+    payload: gender
+  }
+}
 export const orderCards = (order) => {
   return {
     type: ORDER,
-    payload: order,
-  };
-};
+    payload: order
+  }
+}
 export const cleanFilter = () => ({
-  type: CLEAN_FILTER,
-});
+  type: CLEAN_FILTER
+})
 
 export const reset = () => ({
-  type: RESET,
+  type: RESET
 })
