@@ -5,5 +5,5 @@ export const CLEAN_DETAIL = "CLEAN_DETAIL";
 export const GET_CHARACTERS = "GET_CHARACTERS";
 export const REMOVE_CHARACTER = "REMOVE_CHARACTER";
 export const RANDOM_CHARACTERS = "RANDOM_CHARACTERS";
-export const FILTER_GEN= "FILTER_GEN";
-export const FILTER_ORDER= "FILTER_ORDER";
+export const FILTER= "FILTER";
+export const ORDER= "ORDER";

@@ -1,4 +1,4 @@
-import { ADD_FAVORITE, REMOVE_FAVORITE, DETAIL_CHARACTERS, CLEAN_DETAIL, GET_CHARACTERS, REMOVE_CHARACTER, FILTER_GEN,FILTER_ORDER } from "./types";
+import { ADD_FAVORITE, REMOVE_FAVORITE, DETAIL_CHARACTERS, CLEAN_DETAIL, GET_CHARACTERS, REMOVE_CHARACTER,FILTER,ORDER} from "./types";
 
 export const addFavorite = (character) => {
   return {
@@ -55,15 +55,15 @@ export const removeCharacter = (id) => {
   }
 }
 
-export const filterGen = (gender) => {
+export const filterCards = (gender) => {
   return {
-    type: FILTER_GEN,
+    type: FILTER,
     payload: gender,
   };
 }
-export const filterOrder = (order) => {
+export const orderCards = (order) => {
   return {
-    type: FILTER_ORDER,
+    type: ORDER,
     payload: order,
   };
 }
