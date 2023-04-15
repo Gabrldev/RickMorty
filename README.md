@@ -21,7 +21,7 @@ Para ejecutar este proyecto, deberá agregar las siguientes variables de entorno
 `VITE_SUPA_KEY= KEY`
 
 
-## Deploy
+## Deployed
 https://rick-morty-sage.vercel.app/
 ## Authors
 
