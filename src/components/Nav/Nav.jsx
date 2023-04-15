@@ -2,22 +2,17 @@ import SearchBar from '../SearchBar/SearchBar'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import style from '../styles/nav.module.css'
 import Logo from '../../assets/logo.png'
-
-import { supabase } from '../../client/client'
 import { FiLogOut, FiMenu } from 'react-icons/fi'
 import { GoChevronLeft } from 'react-icons/go'
-
+import useLogout from '../../hooks/useLogout '
 import { BiX } from 'react-icons/bi'
 import { useState } from 'react'
 import { BsFillBookmarkCheckFill } from 'react-icons/bs'
 import GetRandom from '../GetRandom/GetRandom'
 const Nav = () => {
   const navigate = useNavigate()
+  const logout = useLogout()
 
-  async function logout () {
-    await supabase.auth.signOut()
-    navigate('/')
-  }
   const [showMenu, setShowMenu] = useState(false)
 
   const menuClose = () => {
@@ -76,7 +71,7 @@ const Nav = () => {
             : <button onClick={() => navigate(-1)} className={style.back}>
               <GoChevronLeft />
               Back
-            </button>}
+              </button>}
           <FiLogOut
             onClick={logout}
             style={{ color: '#ffffff80', fontSize: '20px', cursor: 'pointer' }}

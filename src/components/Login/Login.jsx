@@ -7,6 +7,7 @@ import { BsGoogle, BsGithub } from 'react-icons/bs'
 import LoginGoogle from '../../services/LoginGoogle'
 import loginWhithEmail from '../../services/loginEmail'
 import checkLogin from '../../utils/checkLogin'
+import { Link } from 'react-router-dom'
 
 const Login = () => {
   const check = checkLogin()
@@ -19,6 +20,7 @@ const Login = () => {
   })
 
   function handleChange (event) {
+    validate()
     setFormData((prevFormData) => {
       return {
         ...prevFormData,
@@ -32,7 +34,25 @@ const Login = () => {
   }
   const signInWithGoogle = LoginGoogle()
   const handleSubmit = loginWhithEmail(formData)
-
+  const [errors, setErrors] = useState({
+    email: '',
+    password: ''
+  })
+  const validate = () => {
+    const errors = {}
+    if (!formData.email) {
+      errors.email = 'Email is required'
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      errors.email = 'Email is invalid'
+    }
+    if (!formData.password) {
+      errors.password = 'Password is required'
+    } else if (formData.password.length < 6) {
+      errors.password = 'Password must be at least 6 characters'
+    }
+    setErrors(errors)
+  }
+  console.log(errors)
   return (
     <>
       <header
@@ -58,7 +78,9 @@ const Login = () => {
               onChange={handleChange}
               className={style.input}
             />
+
           </div>
+          {errors.email && <span style={{ color: 'red' }}>{errors.email}</span>}
           <div className={style.inputContainer + ' ' + style.inputPassword}>
             <FiLock className={style.lock} />
             <input
@@ -105,7 +127,7 @@ const Login = () => {
           </div>
           <div className={style.register}>
             <span>You do not have an account?</span>
-            <span className={style.register2}>Register</span>
+            <span className={style.register2}><Link className={style.register2} to='/register'>Register</Link></span>
           </div>
         </form>
         <div className={style.rick}>

@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import Card from '../Cards/Card'
 import style from './style.module.css'
 import { orderCards, filterCards, cleanFilter, reset } from '../../redux/actions'
-import { AiOutlineArrowDown } from 'react-icons/ai'
 
 const MyFavorite = () => {
   useEffect(() => {

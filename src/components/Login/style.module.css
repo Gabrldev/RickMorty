@@ -8,6 +8,7 @@
   padding-right: 170px;
   align-items: center;
   transition: all 0.5s ease-in-out;
+  width: 100%;
 }
 .form {
   display: flex;
@@ -237,6 +238,28 @@ color: rgba(255, 255, 255, 0.2);
   .boxR{
     width: 20px;
     height: 20px;
+  }
+}
+@media (max-width: 768px){
+  .container{
+    padding-left: 0px;
+    padding-right: 0px;
+    justify-content: center;
+  }
+  .rick{
+    display: none;
+  }
+}
+@media(max-width: 992px){
+  .container{
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media(max-width: 1200px){
+  .container{
+    padding-left: 60px;
+    padding-right: 60px;
   }
 }
 
