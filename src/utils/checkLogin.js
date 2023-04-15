@@ -6,7 +6,6 @@ function checkLogin () {
   function check () {
     const navigate = useNavigate()
     useEffect(() => {
-      console.log('checkLogin');
       supabase.auth.onAuthStateChange((event, session) => {
         if (session) {
           navigate('/dashboard')

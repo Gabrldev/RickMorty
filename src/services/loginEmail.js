@@ -1,5 +1,6 @@
 import { supabase } from '../client/client'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-hot-toast'
 function loginWhithEmail (formData) {
   const navigate = useNavigate()
   async function handleSubmit (e) {
@@ -14,8 +15,8 @@ function loginWhithEmail (formData) {
       if (error) throw error
       navigate('/dashboard')
     } catch (error) {
-      // eslint-disable-next-line no-undef
-      alert(error.message)
+      const { message } = error
+      toast.error(message)
     }
   }
   return handleSubmit

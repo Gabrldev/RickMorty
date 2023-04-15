@@ -7,6 +7,7 @@ import checkLogin from '../../utils/checkLogin'
 import { supabase } from '../../client/client'
 import { FaUserAlt } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import { toast, Toaster } from 'react-hot-toast'
 
 const Login = () => {
   const check = checkLogin()
@@ -43,13 +44,17 @@ const Login = () => {
           }
         }
       })
-    } catch (erro) {
-      console.log(erro)
+      if (error) {
+        toast.error(error.message)
+      }
+    } catch (error) {
+      toast.error(error.message)
     }
   }
 
   return (
     <>
+      <Toaster />
       <header
         style={{
           display: 'flex',

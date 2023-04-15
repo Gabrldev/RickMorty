@@ -8,6 +8,7 @@ import LoginGoogle from '../../services/LoginGoogle'
 import loginWhithEmail from '../../services/loginEmail'
 import checkLogin from '../../utils/checkLogin'
 import { Link } from 'react-router-dom'
+import { Toaster } from 'react-hot-toast'
 
 const Login = () => {
   const check = checkLogin()
@@ -55,6 +56,7 @@ const Login = () => {
   console.log(errors)
   return (
     <>
+      <Toaster />
       <header
         style={{
           display: 'flex',
