@@ -5,7 +5,6 @@ import { supabase } from '../client/client'
 
 const ProtectedRoute = ({ children }) => {
   useEffect(() => {
-    console.log('ProtectedRoute')
     supabase.auth.onAuthStateChange((event, session) => {
       switch (session) {
         case null:

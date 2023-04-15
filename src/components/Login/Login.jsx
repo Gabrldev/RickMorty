@@ -53,7 +53,6 @@ const Login = () => {
     }
     setErrors(errors)
   }
-  console.log(errors)
   return (
     <>
       <Toaster />
