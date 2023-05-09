@@ -26,9 +26,8 @@ export const removeFavorite = (id) => {
 
 export const detailCharacters = (id) => {
   return function (dispatch) {
-    const URL_BASE = 'https://be-a-rym.up.railway.app/api/character'
-    const API_KEY = '01c65889effb.1b54c5795354ee1b48e5'
-    fetch(`${URL_BASE}/${id}?key=${API_KEY}`)
+    const URL_BASE = 'https://rickandmortyapi.com/api/character'
+    fetch(`${URL_BASE}/${id}`)
       .then((response) => response.json())
       .then((data) => {
         dispatch({
@@ -46,9 +45,8 @@ export const cleanDetail = () => {
 
 export const getCharacters = (id) => {
   return function (dispatch) {
-    const URL_BASE = 'https://be-a-rym.up.railway.app/api/character'
-    const API_KEY = '01c65889effb.1b54c5795354ee1b48e5'
-    fetch(`${URL_BASE}/${id}?key=${API_KEY}`)
+    const URL_BASE = 'https://rickandmortyapi.com/api/character'
+    fetch(`${URL_BASE}/${id}`)
       .then((response) => response.json())
       .then((data) => {
         dispatch({
